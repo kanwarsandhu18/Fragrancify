@@ -1,4 +1,11 @@
-import { View, Text, Image } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Touchable,
+  TouchableOpacity,
+  Linking,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { SliderBox } from "react-native-image-slider-box";
 import styles from "../styles/homescreen-styles";
@@ -25,22 +32,26 @@ const Homescreen = () => {
       <View style={styles.perfumeContainer}>
         {featuredItems.slice(0, 3).map((perfume) => (
           <View key={perfume.id} style={styles.perfumeItem}>
-            <Image source={perfume.image} style={styles.perfumeImage} />
-            <Text numberOfLines={1} style={styles.perfumeName}>
-              {perfume.name}
-            </Text>
-            <Text style={styles.perfumePrice}>{perfume.price}</Text>
+            <TouchableOpacity
+              onPress={() => Linking.openURL("https://fragrancebuy.ca/")}
+            >
+              <Image source={perfume.image} style={styles.perfumeImage} />
+              <Text style={styles.perfumeName}>{perfume.name}</Text>
+              <Text style={styles.perfumePrice}>{perfume.price}</Text>
+            </TouchableOpacity>
           </View>
         ))}
       </View>
       <View style={styles.perfumeContainer}>
         {featuredItems.slice(3, 6).map((perfume) => (
           <View key={perfume.id} style={styles.perfumeItem}>
-            <Image source={perfume.image} style={styles.perfumeImage} />
-            <Text numberOfLines={1} style={styles.perfumeName}>
-              {perfume.name}
-            </Text>
-            <Text style={styles.perfumePrice}>{perfume.price}</Text>
+            <TouchableOpacity
+              onPress={() => Linking.openURL("https://fragrancebuy.ca/")}
+            >
+              <Image source={perfume.image} style={styles.perfumeImage} />
+              <Text style={styles.perfumeName}>{perfume.name}</Text>
+              <Text style={styles.perfumePrice}>{perfume.price}</Text>
+            </TouchableOpacity>
           </View>
         ))}
       </View>

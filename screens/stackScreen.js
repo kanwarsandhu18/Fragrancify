@@ -6,7 +6,6 @@ import styles from "../styles/cardItem";
 const stackScreen = ({ route, navigation }) => {
   const { fragranceList } = route.params;
   const [selectedChoices, setSelectedChoices] = useState([]);
-  console.log(fragranceList.size);
 
   useEffect(() => {
     setSelectedChoices([]);

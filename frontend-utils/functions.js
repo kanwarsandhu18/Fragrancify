@@ -8,7 +8,6 @@ import {
 } from "../backend/DataBase";
 
 export function filterFragrances(gender, budget, perfumeStrength) {
-  console.log(gender, budget, perfumeStrength);
   let fragranceList = [];
   if (gender == "male") {
     if (perfumeStrength == "low") {
@@ -47,8 +46,6 @@ export function filterFragrances(gender, budget, perfumeStrength) {
       );
     }
   }
-  console.log(fragranceList);
   let ret = fragranceList.filter((e) => e.price <= budget);
-  console.log(ret);
   return ret;
 }

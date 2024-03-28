@@ -36,20 +36,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    height: 60, // Header height
+    height: 60,
   },
   backButton: {
     position: "absolute",
-    left: 10, // Adjust the left position as needed
+    left: 10,
   },
   backButtonText: {
     color: "#f27575",
-    fontSize: 16, // Back button text font size
+    fontSize: 16,
   },
   title: {
     color: "#f27575",
-    fontSize: 40, // Title text font size
-    fontWeight: "bold", // Title text font weight
+    fontSize: 40,
+    fontWeight: "bold",
   },
 });
 

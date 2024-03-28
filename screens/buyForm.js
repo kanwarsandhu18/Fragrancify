@@ -11,6 +11,7 @@ import {
   womenFragrancesStrongStrength,
 } from "../backend/DataBase";
 import { useNavigation } from "@react-navigation/native";
+import { SelectList } from "react-native-dropdown-select-list";
 
 const buyForm = () => {
   const navigation = useNavigation();
@@ -43,7 +44,11 @@ const buyForm = () => {
   ];
 
   const handleBuyRequest = () => {
-    navigation.navigate("ConfirmationScreen");
+    if (fragrance && quantity && customerName && address && email) {
+      navigation.navigate("ConfirmationScreen");
+    } else {
+      alert("Please enter all fields");
+    }
   };
   return (
     <View
@@ -63,22 +68,11 @@ const buyForm = () => {
       >
         Choose Fragrance
       </Text>
-      <View style={{ alignSelf: "center" }}>
-        <RNPickerSelect
-          style={{
-            fontSize: 30,
-            paddingVertical: 12,
-            paddingHorizontal: 10,
-            borderWidth: 1,
-            borderColor: "gray",
-            borderRadius: 4,
-            color: "black",
-            paddingRight: 30, // to ensure the text is never behind the icon
-          }}
-          placeholder={{ label: "Select Fragrance", value: null }}
-          items={fragranceOptions}
-          onValueChange={(value) => setFragrance(value)}
-          value={fragrance}
+      <View style={{ paddingHorizontal: 10 }}>
+        <SelectList
+          setSelected={(value) => setFragrance(value)}
+          data={fragranceOptions}
+          save="value"
         />
       </View>
 
@@ -92,12 +86,11 @@ const buyForm = () => {
       >
         Quantity
       </Text>
-      <View style={{ alignSelf: "center" }}>
-        <RNPickerSelect
-          placeholder={{ label: "Select Quantity", value: null }}
-          items={quantityOptions}
-          onValueChange={(value) => setQuantity(value)}
-          value={quantity}
+      <View style={{ paddingHorizontal: 10 }}>
+        <SelectList
+          setSelected={(value) => setQuantity(value)}
+          data={quantityOptions}
+          save="value"
         />
       </View>
       <Text
@@ -112,7 +105,7 @@ const buyForm = () => {
       </Text>
       <View>
         <TextInput
-          style={{ alignSelf: "center", fontSize: 20 }}
+          style={{ alignSelf: "center", fontSize: 20, textAlign: "center" }}
           placeholder="Enter customer name"
           value={customerName}
           onChangeText={(text) => setCustomerName(text)}
@@ -131,7 +124,7 @@ const buyForm = () => {
       </Text>
       <View>
         <TextInput
-          style={{ alignSelf: "center", fontSize: 20 }}
+          style={{ alignSelf: "center", fontSize: 20, textAlign: "center" }}
           placeholder="Enter Email"
           value={email}
           onChangeText={(text) => setEmail(text)}
@@ -149,7 +142,7 @@ const buyForm = () => {
       </Text>
       <View>
         <TextInput
-          style={{ alignSelf: "center", fontSize: 20 }}
+          style={{ alignSelf: "center", fontSize: 20, textAlign: "center" }}
           placeholder="Enter address"
           value={address}
           onChangeText={(text) => setAddress(text)}

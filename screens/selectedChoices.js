@@ -21,7 +21,7 @@ const SelectedChoices = ({ route, navigation }) => {
         justifyContent: "space-around",
         margin: 10,
         paddingHorizontal: 10,
-        borderRadius: "10%",
+        borderRadius: 10,
         borderWidth: 1,
       }}
     >

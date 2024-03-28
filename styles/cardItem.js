@@ -4,7 +4,9 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "white",
     borderRadius: 10,
-    margin: 10,
+    margin: 1,
+    alignSelf: "center",
+    paddingVertical: 20,
   },
   image: {
     marginTop: 5,

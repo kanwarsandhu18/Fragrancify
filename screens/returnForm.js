@@ -11,6 +11,8 @@ import {
   womenFragrancesStrongStrength,
 } from "../backend/DataBase";
 import { useNavigation } from "@react-navigation/native";
+import { SelectList } from "react-native-dropdown-select-list";
+
 const returnForm = () => {
   const navigation = useNavigation();
   const [fragrance, setFragrance] = useState(null);
@@ -43,7 +45,11 @@ const returnForm = () => {
   ];
 
   const handleBuyRequest = () => {
-    navigation.navigate("ConfirmationScreen");
+    if (fragrance && remQuantity && address && email && askingPrice) {
+      navigation.navigate("ConfirmationScreen");
+    } else {
+      alert("Please enter all fields");
+    }
   };
   return (
     <View
@@ -63,22 +69,11 @@ const returnForm = () => {
       >
         Choose Fragrance
       </Text>
-      <View style={{ alignSelf: "center" }}>
-        <RNPickerSelect
-          style={{
-            fontSize: 30,
-            paddingVertical: 12,
-            paddingHorizontal: 10,
-            borderWidth: 1,
-            borderColor: "gray",
-            borderRadius: 4,
-            color: "black",
-            paddingRight: 30, // to ensure the text is never behind the icon
-          }}
-          placeholder={{ label: "Select Fragrance", value: null }}
-          items={fragranceOptions}
-          onValueChange={(value) => setFragrance(value)}
-          value={fragrance}
+      <View style={{ paddingHorizontal: 10 }}>
+        <SelectList
+          setSelected={(value) => setFragrance(value)}
+          data={fragranceOptions}
+          save="value"
         />
       </View>
 
@@ -94,7 +89,7 @@ const returnForm = () => {
       </Text>
       <View>
         <TextInput
-          style={{ alignSelf: "center", fontSize: 20 }}
+          style={{ alignSelf: "center", fontSize: 20, textAlign: "center" }}
           placeholder="In ml"
           value={remQuantity}
           onChangeText={(text) => setRemQuantity(text)}
@@ -112,7 +107,7 @@ const returnForm = () => {
       </Text>
       <View>
         <TextInput
-          style={{ alignSelf: "center", fontSize: 20 }}
+          style={{ alignSelf: "center", fontSize: 20, textAlign: "center" }}
           placeholder="Enter price"
           value={askingPrice}
           onChangeText={(text) => setAskingPrice(text)}
@@ -131,7 +126,7 @@ const returnForm = () => {
       </Text>
       <View>
         <TextInput
-          style={{ alignSelf: "center", fontSize: 20 }}
+          style={{ alignSelf: "center", fontSize: 20, textAlign: "center" }}
           placeholder="Enter Email"
           value={email}
           onChangeText={(text) => setEmail(text)}
@@ -149,7 +144,7 @@ const returnForm = () => {
       </Text>
       <View>
         <TextInput
-          style={{ alignSelf: "center", fontSize: 20 }}
+          style={{ alignSelf: "center", fontSize: 20, textAlign: "center" }}
           placeholder="Enter address"
           numberOfLines={3}
           value={address}
